@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>RESORTS PEPES</title>
+<link type="text/css" href="estilos.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-4">
+        <div class="col-8 form-container mx-auto">
+            <div class="row">
+                <div id="left-column" class="col-6">
+                    
+                    <form>
+
+                        <input type="text" name="firstName" id="firstName" placeholder="First Name" /> <br /><br />
+                        <input type="text" name="lastName" id="lastName" placeholder="Last Name" /><br /><br />
+                        <select id="hotelNames">
+                            
+                        </select><br /><br />
+                        <input type="number" name="numberOfRooms" id="numberOfRooms" placeholder="No. of Rooms" /><br /><br />
+
+                        <button type="button" class="btn btn-warning" onclick="displayValues()">Consultar disponibilidad</button>
+
+                    </form>
+
+                </div>
+                <div id="right-column" class="col-6 text-center">
+                    <div class="row">
+                        <h2 class="col-12" id="hotelChosen"></h2>
+                        <h3 id="statement" class="col-12 green">El hotel tiene actualmente</h3>
+                        <h1 id="displayRooms" class="col-12 orange">--</h1>
+                        <p class="col-12 text-center">Cuartos</p>
+                        <h3 id="guestName" class="col-12"></h3>
+                        <p id="reservationResult" class="col-12 green">Reserva realizada con éxito!</p>
+                        <ul id="amenities" class="col-12">
+                            <li class="hide">Piscina <span class="gold">|</span></li>
+                            <li class="hide">Gimnasio <span class="gold">|</span></li>
+                        </ul>
+                    </div>	        			
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+
+<script src="fun.js"></script>
+</body>
+</html>
