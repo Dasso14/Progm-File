@@ -1,38 +1,28 @@
 public class Verificador {
-    // Método para verificar si dos rectángulos están superpuestos
-    public static boolean estanSuperpuestos(Rectangulo r1, Rectangulo r2) {
-        // Verificar si las coordenadas de las esquinas se superponen
-        if (r1.getEsquina1().getX() < r2.getEsquina2().getX() &&
-                r1.getEsquina2().getX() > r2.getEsquina1().getX() &&
-                r1.getEsquina1().getY() < r2.getEsquina2().getY() &&
-                r1.getEsquina2().getY() > r2.getEsquina1().getY()) {
-            return true;
-        }
-        return false;
+    // Método para verificar si los rectángulos están sobrepuestos
+    public static boolean esSobrePos(Rectangulo rectA, Rectangulo rectB) {
+        // Se verifica primero la sobreposición en el eje x, posteriormente en el eje y
+        boolean xOverlap = rectA.getEsquina1().getX() < rectB.getEsquina2().getX()
+                && rectA.getEsquina2().getX() > rectB.getEsquina1().getX();
+        boolean yOverlap = rectA.getEsquina1().getY() < rectB.getEsquina2().getY()
+                && rectA.getEsquina2().getY() > rectB.getEsquina1().getY();
+        // Se devuelve true si hay superposición en ambos ejes, de lo contrario false
+        return xOverlap && yOverlap;
     }
 
-    // Método para verificar si dos rectángulos están juntos
-    public static boolean estanJuntos(Rectangulo r1, Rectangulo r2) {
-        // Verificar si las coordenadas de las esquinas están adyacentes
-        if ((r1.getEsquina1().getX() == r2.getEsquina2().getX() ||
-                r1.getEsquina2().getX() == r2.getEsquina1().getX()) &&
-                (r1.getEsquina1().getY() == r2.getEsquina2().getY() ||
-                        r1.getEsquina2().getY() == r2.getEsquina1().getY())) {
-            return true;
-        }
-        return false;
+    public static boolean esJunto(Rectangulo rectA, Rectangulo rectB) {
+        boolean xDisjoint = rectA.getEsquina1().getX() == rectB.getEsquina2().getX()
+                || rectA.getEsquina2().getX() <= rectB.getEsquina1().getX();
+        boolean yDisjoint = rectA.getEsquina1().getY() == rectB.getEsquina2().getY()
+                || rectA.getEsquina2().getY() <= rectB.getEsquina1().getY();
+        return xDisjoint || yDisjoint;
     }
 
-    // Método para verificar si dos rectángulos están disjuntos
-    public static boolean estanDisjuntos(Rectangulo r1, Rectangulo r2) {
-        // Verificar si las coordenadas de las esquinas no se superponen ni están
-        // adyacentes
-        if (r1.getEsquina1().getX() > r2.getEsquina2().getX() ||
-                r1.getEsquina2().getX() < r2.getEsquina1().getX() ||
-                r1.getEsquina1().getY() > r2.getEsquina2().getY() ||
-                r1.getEsquina2().getY() < r2.getEsquina1().getY()) {
-            return true;
-        }
-        return false;
+    public static boolean esDisjunto(Rectangulo rectA, Rectangulo rectB) {
+        boolean xDisjoint = rectA.getEsquina1().getX() > rectB.getEsquina2().getX()
+                || rectA.getEsquina2().getX() < rectB.getEsquina1().getX();
+        boolean yDisjoint = rectA.getEsquina1().getY() > rectB.getEsquina2().getY()
+                || rectA.getEsquina2().getY() < rectB.getEsquina1().getY();
+        return xDisjoint || yDisjoint;
     }
 }
